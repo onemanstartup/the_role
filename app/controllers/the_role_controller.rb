@@ -2,7 +2,8 @@ module TheRoleController
   private
 
   def login_required
-    authenticate_user! if included.respond_to(:authenticate_user!)
+    authenticate_user! if respond_to?(:authenticate_user!)
+    require_login if respond_to?(:require_login)
   end
 
   def role_access_denied
